@@ -77,11 +77,12 @@ class AddActivity : AppCompatActivity() {
                 val uploadTask = childRef.putFile(filePath!!)
                 uploadTask.addOnSuccessListener {
                     val user = mAuth.currentUser
-                    val databaseReference = database.reference.child("app/data/"+user!!.uid).push()
+                    val databaseReference = database.reference.child("app/data/").push()
                     databaseReference.child("title").setValue(addTitle!!.text.toString())
                     databaseReference.child("content").setValue(addContent!!.text.toString())
                     databaseReference.child("thumbnail").setValue("https://firebasestorage.googleapis.com/v0/b/tesprojectapp.appspot.com/o/"+newName+".jpg?alt=media&token=cef97ac8-85b7-4fb7-8c03-34858978baab")
                     databaseReference.child("location").setValue("$latitude,$longitude")
+                    databaseReference.child("uid").setValue(user!!.uid)
                     Toast.makeText(this@AddActivity, "Upload successful", Toast.LENGTH_SHORT).show()
                     var mainIntent = Intent(this, MainActivity::class.java)
                     startActivity(mainIntent)

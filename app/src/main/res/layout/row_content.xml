@@ -8,6 +8,7 @@
     android:orientation="horizontal"
     android:padding="8dp"
     app:cardBackgroundColor="#FFFFFF"
+    android:id="@+id/cardViewContent"
     app:cardCornerRadius="8dp">
 
     <LinearLayout

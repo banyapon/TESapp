@@ -42,9 +42,14 @@ class DataAdapter(val dataModelList: List<DataModel>) : RecyclerView.Adapter<Vie
             override fun onCancelled(databaseError: DatabaseError) { }
         })
 
-        holder.imageView!!.setOnClickListener(View.OnClickListener { v ->
+        holder.cardViewContent!!.setOnClickListener(View.OnClickListener { v ->
             val readActivity = Intent(v.context, DetailActivity::class.java)
             readActivity.putExtra("keys", mylist[position])
+            readActivity.putExtra("title",dataModel.title)
+            readActivity.putExtra("content",dataModel.title)
+            readActivity.putExtra("thumbnail",dataModel.thumbnail)
+            readActivity.putExtra("location",dataModel.location)
+            readActivity.putExtra("uid",dataModel.uid)
             v.context.startActivity(readActivity)
         })
 

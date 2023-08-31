@@ -1,10 +1,12 @@
 package com.daydev.tesapps
 
-import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,14 +15,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
+
 class MainActivity : AppCompatActivity() {
-    private lateinit var response_data: MutableList<DataModel>
+    private lateinit var responseData: MutableList<DataModel>
     private var dataAdapter: DataAdapter? = null
     private var recyclerView: RecyclerView? = null
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
-    lateinit var mAuth: FirebaseAuth
-    var uid: String? = null
+    private lateinit var mAuth: FirebaseAuth
+    private var uid: String? = null
 
     private var fabAdd: FloatingActionButton? = null
     private var userEmail: String? = null
@@ -53,11 +56,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView!!.layoutManager = GridLayoutManager(this, 1)
 
         firebaseDatabase = FirebaseDatabase.getInstance()
-        databaseReference = firebaseDatabase.getReference("app/data/"+user!!.uid)
-        //Log.d(ContentValues.TAG, "DB= app/data/"+user!!.uid)
-        response_data = mutableListOf()
+        databaseReference = firebaseDatabase.getReference("app/data/")
+        responseData = mutableListOf()
 
-        dataAdapter = DataAdapter(response_data as ArrayList<DataModel>)
+        dataAdapter = DataAdapter(responseData as ArrayList<DataModel>)
         recyclerView!!.adapter = dataAdapter
         bindingData()
 
@@ -71,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     private fun bindingData() {
         databaseReference!!.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                response_data!!.add(snapshot.getValue(DataModel::class.java)!!)
+                responseData!!.add(snapshot.getValue(DataModel::class.java)!!)
                 dataAdapter!!.notifyDataSetChanged()
             }
 
@@ -83,5 +85,26 @@ class MainActivity : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) { }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                intent = Intent(this, Settings::class.java)
+                startActivity(intent)
+                true
+            }
+
+            R.id.action_logout -> {
+                Toast.makeText(applicationContext, "Logout coming soon", Toast.LENGTH_LONG).show()
+                return true
+            }
+            else -> {super.onOptionsItemSelected(item)}
+        }
     }
 }
