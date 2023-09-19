@@ -49,6 +49,8 @@ class DataAdapter(val dataModelList: List<DataModel>) : RecyclerView.Adapter<Vie
             readActivity.putExtra("content",dataModel.title)
             readActivity.putExtra("thumbnail",dataModel.thumbnail)
             readActivity.putExtra("location",dataModel.location)
+            readActivity.putExtra("weight",dataModel.weight)
+            readActivity.putExtra("datetime",dataModel.datetime)
             readActivity.putExtra("uid",dataModel.uid)
             v.context.startActivity(readActivity)
         })

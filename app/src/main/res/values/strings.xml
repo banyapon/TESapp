@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">T.E.S</string>
+    <string name="app_name">T.E.S. Group</string>
     <string name="action_settings">Settings</string>
     <string name="action_logout">Logout</string>
     <string name="action_privacy">Privacy</string>
+
+    <string name="home_fragment">Home</string>
+    <string name="location_fragment">Location</string>
+    <string name="point_fragment">Point</string>
 </resources>

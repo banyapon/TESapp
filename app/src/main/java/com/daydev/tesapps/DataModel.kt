@@ -6,6 +6,8 @@ class DataModel {
     var thumbnail: String?=null
     var key:String?=null
     var location:String?=null
+    var datetime:String?=null
+    var weight:String?=null
     var uid:String?=null
 
     constructor()
@@ -15,6 +17,8 @@ class DataModel {
         thumbnail: String?,
         key: String?,
         location: String?,
+        weight: String?,
+        datetime: String?,
         uid: String?
     ) {
         this.title = title
@@ -22,6 +26,8 @@ class DataModel {
         this.thumbnail = thumbnail
         this.key = key
         this.location = location
+        this.datetime = datetime
+        this.weight = weight
         this.uid = uid
     }
 
@@ -32,6 +38,8 @@ class DataModel {
         result.put("thumbnail", thumbnail!!)
         result.put("location", location!!)
         result.put("key", key!!)
+        result.put("weight", weight!!)
+        result.put("datetime", datetime!!)
         result.put("uid", uid!!)
         return result
     }
