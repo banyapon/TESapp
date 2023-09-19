@@ -44,17 +44,6 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/buttonAddData"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/purple_200"
-                    android:backgroundTint="@color/purple_200"
-                    app:icon="@drawable/plus"
-                    app:iconTint="@color/white"
-                    app:strokeWidth="0dp" />
-
-                <Button
                     android:id="@+id/buttonProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +134,7 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/notosansthai"
             android:padding="5dp"
-            android:text="กิจกรรมของคุณ"
+            android:text="ประวัติการทำรายการ"
             android:textAlignment="viewStart"
             android:textColor="@color/purple_200"
             android:textSize="20sp"

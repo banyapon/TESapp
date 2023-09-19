@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
     private var tabs: TabLayout? = null
     private var cardAdd: CardView? = null
 
-    private var buttonAddData: Button?=null
     private var buttonProfile: Button?=null
     private var buttonLogout: Button?=null
 
@@ -64,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         val user = mAuth.currentUser
 
         tabs = findViewById<TabLayout>(R.id.tabs)
-        buttonAddData = findViewById<Button>(R.id.buttonAddData)
         buttonProfile = findViewById<Button>(R.id.buttonProfile)
         buttonLogout = findViewById<Button>(R.id.buttonLogout)
 
@@ -101,11 +99,6 @@ class MainActivity : AppCompatActivity() {
         cardAdd!!.setOnClickListener {
             val intentAddSession = Intent(this,AddActivity::class.java)
             startActivity(intentAddSession)
-        }
-
-        buttonAddData!!.setOnClickListener{
-            val intentAddData = Intent(this,AddActivity::class.java)
-            startActivity(intentAddData)
         }
 
         buttonLogout!!.setOnClickListener {
